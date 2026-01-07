@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="header">Inclusão</div>
+
+  <div *ngIf="msgOk" class="alert alert-success">{{ msgOk }}</div>
+  <div *ngIf="msgErro" class="alert alert-error">{{ msgErro }}</div>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="form-group">
+      <label>Nome</label>
+      <input formControlName="nome" placeholder="Nome completo">
+    </div>
+
+    <div class="form-group">
+      <label>CPF</label>
+      <input formControlName="cpf" placeholder="Somente números">
+    </div>
+
+    <div class="form-group">
+      <label>Cidade</label>
+      <input formControlName="cidade" placeholder="Cidade">
+    </div>
+
+    <div class="form-group">
+      <label>Estado</label>
+      <select formControlName="cd_estado">
+        <option [ngValue]="null" disabled>Selecione...</option>
+        <option *ngFor="let e of estados" [ngValue]="e.id">{{ e.nome }}</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-success" type="submit" [disabled]="loading">
+        {{ loading ? 'Salvando...' : 'Salvar' }}
+      </button>
+      <button class="btn btn-secondary" type="button" (click)="voltar()">Voltar</button>
+    </div>
+  </form>
+</div>
