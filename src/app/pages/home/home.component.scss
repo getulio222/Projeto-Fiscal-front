@@ -1,0 +1,141 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 16px;
+  background: #f3f5f7;
+  font-family: Arial, sans-serif;
+}
+
+.window {
+  width: 1024px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #cfcfcf;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.topbar {
+  height: 46px;
+  background: #0b6fa4;
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 14px;
+
+  .brand {
+    font-weight: 700;
+    font-size: 13px;
+    justify-self: start;
+    opacity: 0.95;
+  }
+
+  .title {
+    justify-self: center;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+  }
+
+  .close {
+    justify-self: end;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+  }
+}
+
+.content {
+  padding: 26px 26px 22px;
+}
+
+.candidate {
+  text-align: center;
+  font-weight: 700;
+  color: #0b6fa4;
+  margin: 6px 0 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 8px 10px 0;
+
+  // segunda linha com 2 botões centralizados
+  .btn:nth-child(4) {
+    grid-column: 1 / 2;
+  }
+  .btn:nth-child(5) {
+    grid-column: 2 / 3;
+  }
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  height: 44px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.btn.primary {
+  background: #0b4f7d;
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(11, 79, 125, 0.25);
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.btn.exit {
+  background: #c62828;
+  color: #fff;
+  height: 34px;
+  padding: 0 34px;
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(198, 40, 40, 0.25);
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+/* Responsivo */
+@media (max-width: 680px) {
+  .window {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

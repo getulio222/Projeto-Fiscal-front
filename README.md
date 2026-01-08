@@ -1,16 +1,50 @@
-# cadastramento-front (Angular clássico - no-standalone)
+# Desafio FSBR - Frontend (Angular)
 
-Frontend para consumir o microserviço (Pessoa/Estado + Auth JWT).
+Frontend desenvolvido em **Angular** para consumo da API do desafio FSBR (Sistema de Cadastramento).
 
-## Pré-requisitos
-- Node LTS
-- Angular CLI (compatível com sua versão do projeto)
+O sistema implementa as seguintes funcionalidades:
 
-## Como rodar
+- Login com autenticação JWT
+- Tela Principal (Menu)
+- Cadastro de Pessoa
+- Alteração de Pessoa
+- Exclusão de Pessoa
+- Consulta por CPF
+- Listagem por Nome ou CPF
+- Integração com backend Java Spring Boot
+
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- Angular
+- TypeScript
+- SCSS
+- HTML
+- RxJS
+
+---
+
+## 📋 Requisitos
+
+- Node.js 18+ ou 20+
+- NPM 9+ ou 10+
+- Angular CLI
+
+---
+
+## ▶️ Como executar o projeto
+
+Na raiz do projeto:
+
 ```bash
 npm install
-ng serve
-```
+npm start
 
-## Integração com Backend
-Configure `src/environments/environment.ts` com o `apiBaseUrl` do seu backend (ex.: http://localhost:8080).
+A aplicação ficará disponível em:
+http://localhost:4200
+
+Credenciais padrão:
+
+Usuário: dev1
+Senha: devpassword

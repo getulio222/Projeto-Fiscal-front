@@ -1,69 +1,89 @@
 import { Component, OnInit } from "@angular/core";
-
 import { Router } from "@angular/router";
-import { Estado } from "../../models/estado.model";
-import { EstadoService } from "../../services/estado.service";
 import { PessoaService } from "../../services/pessoa.service";
-import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { EstadoService } from "../../services/estado.service";
 
 @Component({
   selector: "app-pessoa-cadastro",
   templateUrl: "./pessoa-cadastro.component.html",
+  styleUrls: ["./pessoa-cadastro.component.scss"],
 })
 export class PessoaCadastroComponent implements OnInit {
-  estados: Estado[] = [];
-  loading = false;
-  msgOk = "";
-  msgErro = "";
-  form: FormGroup;
+  msg = "";
+
+  // Campos
+  cd_estado: number | null = null;
+  nome = "";
+  cpf = "";
+  cidade = "";
+
+  estados: any[] = [];
 
   constructor(
-    private fb: FormBuilder,
-    private estadoService: EstadoService,
     private pessoaService: PessoaService,
+    private estadoService: EstadoService,
     private router: Router
-  ) {
-    this.form = this.fb.group({
-      nome: ["", [Validators.required, Validators.maxLength(100)]],
-      cpf: ["", [Validators.required]],
-      cidade: ["", [Validators.required, Validators.maxLength(50)]],
-      cd_estado: [null, [Validators.required]],
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.carregarEstados();
+  }
+
+  carregarEstados(): void {
     this.estadoService.listar().subscribe({
-      next: (res) => (this.estados = res),
-      error: () => (this.msgErro = "Falha ao carregar estados."),
+      next: (res: any[]) => (this.estados = res || []),
+      error: () => (this.estados = []),
     });
   }
 
-  voltar() {
-    this.router.navigate(["/"]);
-  }
+  salvar(): void {
+    this.msg = "";
 
-  salvar() {
-    this.msgOk = "";
-    this.msgErro = "";
+    const nome = (this.nome || "").trim();
+    const cpf = (this.cpf || "").trim();
+    const cidade = (this.cidade || "").trim();
+    const cdEstado = this.cd_estado;
 
-    if (this.form.invalid) {
-      this.msgErro = "Todos os campos devem estar preenchidos.";
-      this.form.markAllAsTouched();
+    // a) Todos os campos devem estar preenchidos
+    if (!cdEstado || !nome || !cpf || !cidade) {
+      this.msg = "Todos os campos devem estar preenchidos.";
       return;
     }
 
-    this.loading = true;
-    this.pessoaService.salvar(this.form.value as any).subscribe({
+    // Regras de tamanho (PDF)
+    if (nome.length > 100) {
+      this.msg = "Nome deve ter no máximo 100 caracteres.";
+      return;
+    }
+    if (cpf.length > 11) {
+      this.msg = "CPF deve ter no máximo 11 caracteres.";
+      return;
+    }
+    if (cidade.length > 50) {
+      this.msg = "Cidade deve ter no máximo 50 caracteres.";
+      return;
+    }
+
+    const payload = {
+      nome,
+      cpf,
+      cidade,
+      cd_estado: cdEstado,
+    };
+
+    this.pessoaService.salvar(payload).subscribe({
       next: () => {
-        this.loading = false;
-        this.msgOk = "Cadastro realizado com sucesso.";
-        // opcional: voltar automaticamente
-        // this.router.navigate(['/']);
+        alert("Cadastro Realizado com Sucesso");
+        this.router.navigate(["/"]);
       },
       error: () => {
-        this.loading = false;
-        this.msgErro = "Erro ao salvar. Tente novamente.";
+        this.msg = "Houve algum problema na inclusão, tentar novamente.";
+        // permanece na tela com os dados preenchidos
       },
     });
+  }
+
+  voltar(): void {
+    this.router.navigate(["/"]);
   }
 }

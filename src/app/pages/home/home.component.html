@@ -1,14 +1,39 @@
-<div class="container">
-  <div class="header">Tela Principal</div>
+<div class="page">
+  <div class="window">
+    <!-- Barra superior -->
+    <div class="topbar">
+      <div class="brand">FSBR</div>
+      <div class="title">Cadastramento</div>
+      <button class="close" type="button" (click)="sair()" aria-label="Fechar">
+        X
+      </button>
+    </div>
 
-  <div class="actions">
-    <button class="btn btn-primary" routerLink="/pessoa/cadastro">Incluir</button>
-    <button class="btn btn-warning" routerLink="/pessoa/alteracao">Alterar</button>
-    <button class="btn btn-secondary" disabled>Consultar</button>
-    <button class="btn btn-danger" disabled>Excluir</button>
-  </div>
+    <!-- Conteúdo -->
+    <div class="content">
+      <div class="candidate">&lt;Getúlio Azevedo&gt;</div>
 
-  <div class="form-actions" style="justify-content:center; margin-top: 24px;">
-    <button class="btn btn-secondary" (click)="sair()">Sair</button>
+      <div class="grid">
+        <button class="btn primary" routerLink="/pessoa/cadastro">
+          Incluir
+        </button>
+        <button class="btn primary" routerLink="/pessoa/alteracao">
+          Alterar
+        </button>
+        <button class="btn primary" type="button" routerLink="/pessoa/consulta">
+          Consultar
+        </button>
+        <button class="btn primary" type="button" routerLink="/pessoa/listagem">
+          Listagem
+        </button>
+        <button class="btn primary" type="button" routerLink="/pessoa/exclusao">
+          Excluir
+        </button>
+      </div>
+
+      <div class="footer">
+        <button class="btn exit" type="button" (click)="sair()">Sair</button>
+      </div>
+    </div>
   </div>
 </div>

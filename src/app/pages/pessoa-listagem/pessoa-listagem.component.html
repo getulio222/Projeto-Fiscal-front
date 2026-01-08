@@ -1,0 +1,61 @@
+<div class="page">
+  <div class="card">
+    <h2 class="title">Listagem</h2>
+
+    <div class="form">
+      <div class="row">
+        <div class="field">
+          <label>Nome</label>
+          <input type="text" [(ngModel)]="nome" placeholder="Informe o nome" />
+        </div>
+
+        <div class="field">
+          <label>CPF</label>
+          <input type="text" [(ngModel)]="cpf" placeholder="Informe o CPF" />
+        </div>
+
+        <div class="field qtd">
+          <label>Qtd</label>
+          <input type="text" [value]="qtd" disabled />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-blue" type="button" (click)="buscar()">
+          Buscar
+        </button>
+        <button class="btn btn-gray" type="button" (click)="limpar()">
+          Limpar
+        </button>
+        <button class="btn btn-gray" type="button" (click)="voltar()">
+          Voltar
+        </button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div *ngIf="msg" class="msg">{{ msg }}</div>
+
+    <div class="table-wrap" *ngIf="resultados.length">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Cidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of resultados">
+            <td>{{ p.id }}</td>
+            <td>{{ p.nome }}</td>
+            <td>{{ p.cpf }}</td>
+            <td>{{ p.cidade }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
