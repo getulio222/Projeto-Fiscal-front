@@ -1,25 +1,40 @@
-<div class="container">
-  <div class="header">Login</div>
-
-  <div *ngIf="errorMsg" class="alert alert-error">{{ errorMsg }}</div>
-
-  <form [formGroup]="form" (ngSubmit)="login()">
-    <div class="form-group">
-      <label>Usuário</label>
-      <input formControlName="usuario" placeholder="Digite seu usuário">
+<div class="page">
+  <div class="card">
+    <div class="header">
+      <h2>Login</h2>
+      <p>Entre com suas credenciais para acessar o sistema.</p>
     </div>
 
-    <div class="form-group">
-      <label>Senha</label>
-      <input type="password" formControlName="senha" placeholder="Digite sua senha">
-    </div>
+    <form [formGroup]="form" (ngSubmit)="login()" class="form">
+      <div class="field">
+        <label>Usuário</label>
+        <input
+          type="text"
+          formControlName="usuario"
+          placeholder="Digite seu usuário"
+        />
+      </div>
 
-    <div class="form-actions">
-      <button class="btn btn-primary" type="submit" [disabled]="loading">
-        {{ loading ? 'Entrando...' : 'Entrar' }}
-      </button>
-    </div>
+      <div class="field">
+        <label>Senha</label>
+        <input
+          type="password"
+          formControlName="senha"
+          placeholder="Digite sua senha"
+        />
+      </div>
 
-    <div class="small">Após login, você será direcionado ao menu principal.</div>
-  </form>
+      <div class="actions">
+        <button class="btn" type="submit">Entrar</button>
+      </div>
+
+      <div *ngIf="errorMsg" class="error">
+        {{ errorMsg }}
+      </div>
+
+      <div class="hint">
+        Após login, você será direcionado ao menu principal.
+      </div>
+    </form>
+  </div>
 </div>

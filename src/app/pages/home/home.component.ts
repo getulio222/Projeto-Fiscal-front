@@ -1,17 +1,16 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html'
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router, private auth: AuthService) {}
-
-  sair() {
-    this.auth.logout();
-    this.router.navigate(['/login']);
+  sair(): void {
+    localStorage.removeItem("token");
+    this.router.navigate(["/login"]);
   }
 }

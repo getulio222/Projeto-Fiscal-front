@@ -1,14 +1,13 @@
 <div class="page">
   <div class="card">
-    <h2 class="title">Alteração</h2>
+    <h2 class="title">Consulta</h2>
 
-    <!-- Busca por CPF -->
     <div class="form-row">
       <div class="field">
         <label>CPF</label>
         <input
           type="text"
-          [(ngModel)]="cpfBusca"
+          [(ngModel)]="cpf"
           placeholder="Informe o CPF para buscar"
         />
       </div>
@@ -27,37 +26,29 @@
 
     <div *ngIf="msg" class="msg">{{ msg }}</div>
 
-    <!-- Formulário de edição -->
-    <div class="result">
+    <!-- Resultado: campos desabilitados -->
+    <div *ngIf="pessoa" class="result">
       <div class="field">
         <label>Nome</label>
-        <input type="text" [(ngModel)]="nome" />
+        <input type="text" [value]="pessoa.nome" disabled />
       </div>
 
       <div class="field">
         <label>CPF</label>
-        <input type="text" [(ngModel)]="cpf" />
+        <input type="text" [value]="pessoa.cpf" disabled />
       </div>
 
       <div class="field">
         <label>Cidade</label>
-        <input type="text" [(ngModel)]="cidade" />
+        <input type="text" [value]="pessoa.cidade" disabled />
       </div>
 
       <div class="field">
         <label>Estado</label>
-        <select [(ngModel)]="cd_estado">
-          <option [ngValue]="null">Selecione...</option>
-          <option *ngFor="let e of estados" [ngValue]="e.id">
-            {{ e.nome }}
-          </option>
-        </select>
+        <input type="text" [value]="pessoa.estado?.nome || ''" disabled />
       </div>
 
-      <div class="actions bottom">
-        <button class="btn btn-blue" type="button" (click)="salvar()">
-          Salvar
-        </button>
+      <div class="footer">
         <button class="btn btn-gray" type="button" (click)="voltar()">
           Voltar
         </button>

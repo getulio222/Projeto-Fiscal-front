@@ -1,38 +1,58 @@
-<div class="container">
-  <div class="header">Inclusão</div>
+<div class="page">
+  <div class="card">
+    <h2 class="title">Cadastro</h2>
 
-  <div *ngIf="msgOk" class="alert alert-success">{{ msgOk }}</div>
-  <div *ngIf="msgErro" class="alert alert-error">{{ msgErro }}</div>
+    <div *ngIf="msg" class="msg">{{ msg }}</div>
 
-  <form [formGroup]="form" (ngSubmit)="salvar()">
-    <div class="form-group">
-      <label>Nome</label>
-      <input formControlName="nome" placeholder="Nome completo">
+    <div class="result">
+      <div class="field">
+        <label>Estado</label>
+        <select [(ngModel)]="cd_estado">
+          <option [ngValue]="null">Selecione...</option>
+          <option *ngFor="let e of estados" [ngValue]="e.id">
+            {{ e.nome }}
+          </option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Nome</label>
+        <input
+          type="text"
+          [(ngModel)]="nome"
+          maxlength="100"
+          placeholder="Até 100 caracteres"
+        />
+      </div>
+
+      <div class="field">
+        <label>CPF</label>
+        <input
+          type="text"
+          [(ngModel)]="cpf"
+          maxlength="11"
+          placeholder="Até 11 caracteres"
+        />
+      </div>
+
+      <div class="field">
+        <label>Cidade</label>
+        <input
+          type="text"
+          [(ngModel)]="cidade"
+          maxlength="50"
+          placeholder="Até 50 caracteres"
+        />
+      </div>
+
+      <div class="actions bottom">
+        <button class="btn btn-blue" type="button" (click)="salvar()">
+          Salvar
+        </button>
+        <button class="btn btn-gray" type="button" (click)="voltar()">
+          Voltar
+        </button>
+      </div>
     </div>
-
-    <div class="form-group">
-      <label>CPF</label>
-      <input formControlName="cpf" placeholder="Somente números">
-    </div>
-
-    <div class="form-group">
-      <label>Cidade</label>
-      <input formControlName="cidade" placeholder="Cidade">
-    </div>
-
-    <div class="form-group">
-      <label>Estado</label>
-      <select formControlName="cd_estado">
-        <option [ngValue]="null" disabled>Selecione...</option>
-        <option *ngFor="let e of estados" [ngValue]="e.id">{{ e.nome }}</option>
-      </select>
-    </div>
-
-    <div class="form-actions">
-      <button class="btn btn-success" type="submit" [disabled]="loading">
-        {{ loading ? 'Salvando...' : 'Salvar' }}
-      </button>
-      <button class="btn btn-secondary" type="button" (click)="voltar()">Voltar</button>
-    </div>
-  </form>
+  </div>
 </div>
