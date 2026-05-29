@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { PessoaService } from "../../services/pessoa.service";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 type PessoaLinha = {
   id: number;
@@ -10,9 +11,10 @@ type PessoaLinha = {
 };
 
 @Component({
-  selector: "app-pessoa-listagem",
-  templateUrl: "./pessoa-listagem.component.html",
-  styleUrls: ["./pessoa-listagem.component.scss"],
+    selector: "app-pessoa-listagem",
+    templateUrl: "./pessoa-listagem.component.html",
+    styleUrls: ["./pessoa-listagem.component.scss"],
+    imports: [ReactiveFormsModule, FormsModule]
 })
 export class PessoaListagemComponent {
   nome = "";

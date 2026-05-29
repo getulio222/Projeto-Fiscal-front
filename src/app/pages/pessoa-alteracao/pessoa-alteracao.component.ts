@@ -1,11 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { PessoaService } from "../../services/pessoa.service";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 @Component({
-  selector: "app-pessoa-alteracao",
-  templateUrl: "./pessoa-alteracao.component.html",
-  styleUrls: ["./pessoa-alteracao.component.scss"],
+    selector: "app-pessoa-alteracao",
+    templateUrl: "./pessoa-alteracao.component.html",
+    styleUrls: ["./pessoa-alteracao.component.scss"],
+    imports: [ReactiveFormsModule, FormsModule]
 })
 export class PessoaAlteracaoComponent implements OnInit {
   cpfBusca = "";

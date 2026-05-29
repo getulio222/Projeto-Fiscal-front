@@ -35,27 +35,33 @@
 
     <div class="divider"></div>
 
-    <div *ngIf="msg" class="msg">{{ msg }}</div>
+    @if (msg) {
+      <div class="msg">{{ msg }}</div>
+    }
 
-    <div class="table-wrap" *ngIf="resultados.length">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Cidade</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let p of resultados">
-            <td>{{ p.id }}</td>
-            <td>{{ p.nome }}</td>
-            <td>{{ p.cpf }}</td>
-            <td>{{ p.cidade }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    @if (resultados.length) {
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Cidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (p of resultados; track p) {
+              <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.nome }}</td>
+                <td>{{ p.cpf }}</td>
+                <td>{{ p.cidade }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
   </div>
 </div>

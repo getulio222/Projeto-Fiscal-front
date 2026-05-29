@@ -10,7 +10,7 @@
           type="text"
           [(ngModel)]="cpfBusca"
           placeholder="Informe o CPF para buscar"
-        />
+          />
       </div>
 
       <div class="actions">
@@ -25,7 +25,9 @@
 
     <div class="divider"></div>
 
-    <div *ngIf="msg" class="msg">{{ msg }}</div>
+    @if (msg) {
+      <div class="msg">{{ msg }}</div>
+    }
 
     <!-- Formulário de edição -->
     <div class="result">

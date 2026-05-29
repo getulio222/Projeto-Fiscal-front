@@ -1,11 +1,13 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { PessoaService } from "../../services/pessoa.service";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 @Component({
-  selector: "app-pessoa-exclusao",
-  templateUrl: "./pessoa-exclusao.component.html",
-  styleUrls: ["./pessoa-exclusao.component.scss"],
+    selector: "app-pessoa-exclusao",
+    templateUrl: "./pessoa-exclusao.component.html",
+    styleUrls: ["./pessoa-exclusao.component.scss"],
+    imports: [ReactiveFormsModule, FormsModule]
 })
 export class PessoaExclusaoComponent {
   cpf = "";

@@ -1,11 +1,13 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { PessoaService } from "../../services/pessoa.service";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 @Component({
-  selector: "app-pessoa-consulta",
-  templateUrl: "./pessoa-consulta.component.html",
-  styleUrls: ["./pessoa-consulta.component.scss"],
+    selector: "app-pessoa-consulta",
+    templateUrl: "./pessoa-consulta.component.html",
+    styleUrls: ["./pessoa-consulta.component.scss"],
+    imports: [ReactiveFormsModule, FormsModule]
 })
 export class PessoaConsultaComponent {
   cpf = "";

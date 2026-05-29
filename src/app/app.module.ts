@@ -17,20 +17,17 @@ import { PessoaExclusaoComponent } from "./pages/pessoa-exclusao/pessoa-exclusao
 import { AuthInterceptor } from "./security/auth.interceptor";
 import { PessoaListagemComponent } from "./pages/pessoa-listagem/pessoa-listagem.component";
 
-@NgModule({ declarations: [
-        AppComponent,
-        LoginComponent,
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
+        AppRoutingModule, LoginComponent,
         HomeComponent,
         PessoaCadastroComponent,
         PessoaAlteracaoComponent,
         PessoaConsultaComponent,
         PessoaExclusaoComponent,
-        PessoaListagemComponent,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        ReactiveFormsModule,
-        FormsModule,
-        AppRoutingModule], providers: [
+        PessoaListagemComponent], providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi()),
     ] })

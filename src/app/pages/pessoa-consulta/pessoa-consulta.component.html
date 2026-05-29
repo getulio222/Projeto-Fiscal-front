@@ -9,7 +9,7 @@
           type="text"
           [(ngModel)]="cpf"
           placeholder="Informe o CPF para buscar"
-        />
+          />
       </div>
 
       <div class="actions">
@@ -24,30 +24,31 @@
 
     <div class="divider"></div>
 
-    <div *ngIf="msg" class="msg">{{ msg }}</div>
+    @if (msg) {
+      <div class="msg">{{ msg }}</div>
+    }
 
     <!-- Resultado: campos desabilitados -->
-    <div *ngIf="pessoa" class="result">
-      <div class="field">
-        <label>Nome</label>
-        <input type="text" [value]="pessoa.nome" disabled />
+    @if (pessoa) {
+      <div class="result">
+        <div class="field">
+          <label>Nome</label>
+          <input type="text" [value]="pessoa.nome" disabled />
+        </div>
+        <div class="field">
+          <label>CPF</label>
+          <input type="text" [value]="pessoa.cpf" disabled />
+        </div>
+        <div class="field">
+          <label>Cidade</label>
+          <input type="text" [value]="pessoa.cidade" disabled />
+        </div>
+        <div class="footer">
+          <button class="btn btn-gray" type="button" (click)="voltar()">
+            Voltar
+          </button>
+        </div>
       </div>
-
-      <div class="field">
-        <label>CPF</label>
-        <input type="text" [value]="pessoa.cpf" disabled />
-      </div>
-
-      <div class="field">
-        <label>Cidade</label>
-        <input type="text" [value]="pessoa.cidade" disabled />
-      </div>
-
-      <div class="footer">
-        <button class="btn btn-gray" type="button" (click)="voltar()">
-          Voltar
-        </button>
-      </div>
-    </div>
+    }
   </div>
 </div>

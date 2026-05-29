@@ -2,7 +2,9 @@
   <div class="card">
     <h2 class="title">Cadastro</h2>
 
-    <div *ngIf="msg" class="msg">{{ msg }}</div>
+    @if (msg) {
+      <div class="msg">{{ msg }}</div>
+    }
 
     <div class="result">
       <div class="field">
@@ -12,7 +14,7 @@
           [(ngModel)]="nome"
           maxlength="100"
           placeholder="Até 100 caracteres"
-        />
+          />
       </div>
 
       <div class="field">
@@ -22,7 +24,7 @@
           [(ngModel)]="cpf"
           maxlength="11"
           placeholder="Até 11 caracteres"
-        />
+          />
       </div>
 
       <div class="field">
@@ -32,7 +34,7 @@
           [(ngModel)]="cidade"
           maxlength="50"
           placeholder="Até 50 caracteres"
-        />
+          />
       </div>
 
       <div class="actions bottom">

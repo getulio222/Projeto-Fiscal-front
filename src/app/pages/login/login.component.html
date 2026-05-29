@@ -12,7 +12,7 @@
           type="text"
           formControlName="usuario"
           placeholder="Digite seu usuário"
-        />
+          />
       </div>
 
       <div class="field">
@@ -21,16 +21,18 @@
           type="password"
           formControlName="senha"
           placeholder="Digite sua senha"
-        />
+          />
       </div>
 
       <div class="actions">
         <button class="btn" type="submit">Entrar</button>
       </div>
 
-      <div *ngIf="errorMsg" class="error">
-        {{ errorMsg }}
-      </div>
+      @if (errorMsg) {
+        <div class="error">
+          {{ errorMsg }}
+        </div>
+      }
 
       <div class="hint">
         Após login, você será direcionado ao menu principal.
