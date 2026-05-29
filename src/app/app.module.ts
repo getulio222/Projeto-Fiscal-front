@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
@@ -17,27 +17,21 @@ import { PessoaExclusaoComponent } from "./pages/pessoa-exclusao/pessoa-exclusao
 import { AuthInterceptor } from "./security/auth.interceptor";
 import { PessoaListagemComponent } from "./pages/pessoa-listagem/pessoa-listagem.component";
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-    PessoaCadastroComponent,
-    PessoaAlteracaoComponent,
-    PessoaConsultaComponent,
-    PessoaExclusaoComponent,
-    PessoaListagemComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    AppRoutingModule,
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        LoginComponent,
+        HomeComponent,
+        PessoaCadastroComponent,
+        PessoaAlteracaoComponent,
+        PessoaConsultaComponent,
+        PessoaExclusaoComponent,
+        PessoaListagemComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
+        AppRoutingModule], providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}

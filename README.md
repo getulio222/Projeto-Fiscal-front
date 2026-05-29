@@ -1,50 +1,54 @@
-# Desafio FSBR - Frontend (Angular)
+# 🌐 FiscalSaaS - Enterprise Frontend Platform
 
-Frontend desenvolvido em **Angular** para consumo da API do desafio FSBR (Sistema de Cadastramento).
-
-O sistema implementa as seguintes funcionalidades:
-
-- Login com autenticação JWT
-- Tela Principal (Menu)
-- Cadastro de Pessoa
-- Alteração de Pessoa
-- Exclusão de Pessoa
-- Consulta por CPF
-- Listagem por Nome ou CPF
-- Integração com backend Java Spring Boot
+Plataforma front-end moderna desenvolvida em **Angular**, projetada para operar como um ecossistema **SaaS (Software as a Service)** corporativo. O sistema evoluiu de uma arquitetura CRUD monolítica para um modelo descentralizado de alta escalabilidade e performance.
 
 ---
 
-## 🛠 Tecnologias Utilizadas
+## 🏗️ Diferenciais da Arquitetura SaaS
 
-- Angular
-- TypeScript
-- SCSS
-- HTML
-- RxJS
+A aplicação foi reestruturada para atender às demandas de ambientes corporativos e distribuição em nuvem, destacando-se pelos seguintes pilares:
 
----
-
-## 📋 Requisitos
-
-- Node.js 18+ ou 20+
-- NPM 9+ ou 10+
-- Angular CLI
+- **Arquitetura Multi-Tenant:** Isolamento lógico de dados, rotas e configurações visuais específicas para cada organização/cliente.
+- **Componentização Standalone:** Eliminação de módulos pesados, garantindo carregamento sob demanda (_Lazy Loading_) e redução do tamanho dos pacotes de distribuição.
+- **Reatividade com Signals:** Substituição de fluxos complexos de gerenciamento de estado por controle nativo e síncrono de reatividade.
+- **Design System Fluido:** Interface limpa, responsiva e preparada para customizações dinâmicas de marca (_White-label_).
 
 ---
 
-## ▶️ Como executar o projeto
+## ⚙️ Core Funcional da Aplicação
 
-Na raiz do projeto:
+- **Identity Access Management (IAM):** Autenticação robusta baseada em JWT com controle de rotas por nível de acesso (_Guards_).
+- **Módulo de Pessoas (Enterprise Management):** Fluxo simplificado de cadastro, auditoria, alteração e buscas otimizadas por chaves de identificação (CPF/Nome).
+- **Core de Integração:** Camada de serviços (`HttpInterceptors`) acoplada ao ecossistema de microsserviços em Java Spring Boot.
 
-```bash
-npm install
-npm start
+---
 
-A aplicação ficará disponível em:
-http://localhost:4200
+## 🛠️ Stack Tecnológica
 
-Credenciais padrão:
+- **Core Framework:** Angular 18+ (Processo ativo de transição para v19)
+- **Linguagem Principal:** TypeScript 5+
+- **Engine Reativa:** Signals & RxJS
+- **Estilização Dinâmica:** SCSS Estruturado
 
-Usuário: dev1
-Senha: devpassword
+---
+
+## 🚀 Guia de Inicialização Rápida
+
+### Configuração do Ambiente
+
+Certifique-se de possuir o Node.js instalado (versão estável recomendada) e o Angular CLI configurado no sistema.
+
+1. **Acesse o diretório raiz do front-end:**
+   ```bash
+   cd projeto_fiscal-front
+   ```
+2. **Instale as dependências limpas do projeto:**
+   ```bash
+   npm install
+   ```
+3. **Inicie o ecossistema local em modo de desenvolvimento:**
+   ```bash
+   npm start
+   ```
+
+A plataforma estará disponível para acesso local através do endereço: [http://localhost:4200](http://localhost:4200).
