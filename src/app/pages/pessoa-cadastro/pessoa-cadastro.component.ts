@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { PessoaService } from "../../services/pessoa.service";
-import { EstadoService } from "../../services/estado.service";
 
 @Component({
   selector: "app-pessoa-cadastro",
@@ -12,28 +11,14 @@ export class PessoaCadastroComponent implements OnInit {
   msg = "";
 
   // Campos
-  cd_estado: number | null = null;
   nome = "";
   cpf = "";
   cidade = "";
 
-  estados: any[] = [];
-
-  constructor(
-    private pessoaService: PessoaService,
-    private estadoService: EstadoService,
-    private router: Router
-  ) {}
+  constructor(private pessoaService: PessoaService, private router: Router) {}
 
   ngOnInit(): void {
-    this.carregarEstados();
-  }
-
-  carregarEstados(): void {
-    this.estadoService.listar().subscribe({
-      next: (res: any[]) => (this.estados = res || []),
-      error: () => (this.estados = []),
-    });
+    // Método de carregamento de estados removido
   }
 
   salvar(): void {
@@ -42,10 +27,9 @@ export class PessoaCadastroComponent implements OnInit {
     const nome = (this.nome || "").trim();
     const cpf = (this.cpf || "").trim();
     const cidade = (this.cidade || "").trim();
-    const cdEstado = this.cd_estado;
 
     // a) Todos os campos devem estar preenchidos
-    if (!cdEstado || !nome || !cpf || !cidade) {
+    if (!nome || !cpf || !cidade) {
       this.msg = "Todos os campos devem estar preenchidos.";
       return;
     }
@@ -68,7 +52,6 @@ export class PessoaCadastroComponent implements OnInit {
       nome,
       cpf,
       cidade,
-      cd_estado: cdEstado,
     };
 
     this.pessoaService.salvar(payload).subscribe({
@@ -78,7 +61,6 @@ export class PessoaCadastroComponent implements OnInit {
       },
       error: () => {
         this.msg = "Houve algum problema na inclusão, tentar novamente.";
-        // permanece na tela com os dados preenchidos
       },
     });
   }

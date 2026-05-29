@@ -43,11 +43,6 @@
         <input type="text" [value]="pessoa.cidade" disabled />
       </div>
 
-      <div class="field">
-        <label>Estado</label>
-        <input type="text" [value]="pessoa.estado?.nome || ''" disabled />
-      </div>
-
       <div class="actions bottom">
         <button class="btn btn-red" type="button" (click)="excluir()">
           Excluir

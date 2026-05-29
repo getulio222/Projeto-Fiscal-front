@@ -44,16 +44,6 @@
         <input type="text" [(ngModel)]="cidade" />
       </div>
 
-      <div class="field">
-        <label>Estado</label>
-        <select [(ngModel)]="cd_estado">
-          <option [ngValue]="null">Selecione...</option>
-          <option *ngFor="let e of estados" [ngValue]="e.id">
-            {{ e.nome }}
-          </option>
-        </select>
-      </div>
-
       <div class="actions bottom">
         <button class="btn btn-blue" type="button" (click)="salvar()">
           Salvar

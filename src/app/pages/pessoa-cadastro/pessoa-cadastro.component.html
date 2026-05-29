@@ -6,16 +6,6 @@
 
     <div class="result">
       <div class="field">
-        <label>Estado</label>
-        <select [(ngModel)]="cd_estado">
-          <option [ngValue]="null">Selecione...</option>
-          <option *ngFor="let e of estados" [ngValue]="e.id">
-            {{ e.nome }}
-          </option>
-        </select>
-      </div>
-
-      <div class="field">
         <label>Nome</label>
         <input
           type="text"

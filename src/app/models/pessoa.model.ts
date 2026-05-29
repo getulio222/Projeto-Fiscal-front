@@ -1,10 +1,7 @@
-import { Estado } from './estado.model';
-
 export interface PessoaRequest {
   nome: string;
   cpf: string;
   cidade: string;
-  cd_estado: number;
 }
 
 export interface PessoaResponse {
@@ -12,5 +9,4 @@ export interface PessoaResponse {
   nome: string;
   cpf: string;
   cidade: string;
-  estado: Estado;
 }

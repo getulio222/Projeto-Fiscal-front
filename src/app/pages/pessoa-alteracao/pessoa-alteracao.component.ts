@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { PessoaService } from "../../services/pessoa.service";
-import { EstadoService } from "../../services/estado.service";
 
 @Component({
   selector: "app-pessoa-alteracao",
@@ -17,25 +16,11 @@ export class PessoaAlteracaoComponent implements OnInit {
   nome = "";
   cpf = "";
   cidade = "";
-  cd_estado: number | null = null;
 
-  estados: any[] = [];
-
-  constructor(
-    private pessoaService: PessoaService,
-    private estadoService: EstadoService,
-    private router: Router
-  ) {}
+  constructor(private pessoaService: PessoaService, private router: Router) {}
 
   ngOnInit(): void {
-    this.carregarEstados();
-  }
-
-  carregarEstados(): void {
-    this.estadoService.listar().subscribe({
-      next: (res: any[]) => (this.estados = res),
-      error: () => (this.estados = []),
-    });
+    // Método exigido pela interface OnInit adicionado com sucesso
   }
 
   buscar(): void {
@@ -54,7 +39,6 @@ export class PessoaAlteracaoComponent implements OnInit {
         this.nome = p.nome;
         this.cpf = p.cpf;
         this.cidade = p.cidade;
-        this.cd_estado = p.estado?.id || null;
       },
       error: () => {
         // iii) não encontrado
@@ -69,13 +53,7 @@ export class PessoaAlteracaoComponent implements OnInit {
     this.msg = "";
 
     // a) todos os campos devem estar preenchidos
-    if (
-      !this.idPessoa ||
-      !this.nome ||
-      !this.cpf ||
-      !this.cidade ||
-      !this.cd_estado
-    ) {
+    if (!this.idPessoa || !this.nome || !this.cpf || !this.cidade) {
       this.msg = "Todos os campos devem estar preenchidos.";
       return;
     }
@@ -84,7 +62,6 @@ export class PessoaAlteracaoComponent implements OnInit {
       nome: this.nome,
       cpf: this.cpf,
       cidade: this.cidade,
-      cd_estado: this.cd_estado,
     };
 
     this.pessoaService.atualizar(this.idPessoa, payload).subscribe({
@@ -107,6 +84,5 @@ export class PessoaAlteracaoComponent implements OnInit {
     this.nome = "";
     this.cpf = "";
     this.cidade = "";
-    this.cd_estado = null;
   }
 }

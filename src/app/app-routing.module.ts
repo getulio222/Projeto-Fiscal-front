@@ -13,7 +13,11 @@ import { PessoaListagemComponent } from "./pages/pessoa-listagem/pessoa-listagem
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
-  { path: "", component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: "",
+    component: HomeComponent,
+    canActivate: [AuthGuard],
+  },
 
   {
     path: "pessoa/cadastro",
